@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { Movie, UserMovie, MovieInfo } from '../../../types/movie';
 import { movieService } from '../../../services/movieService';
 import './MovieDetail.css';
+import {ReviewsSection} from "./ReviewsSection";
 
 interface MovieDetailProps {
     movie: Movie | UserMovie | null;
     onClose: () => void;
     isAuthenticated: boolean;
-    onUpdate?: () => void; // callback для обновления списка
+    onUpdate?: () => void;
 }
 
 export const MovieDetail: React.FC<MovieDetailProps> = ({
@@ -26,7 +27,6 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
 
-    // Полная отладка пропса movie
     useEffect(() => {
         console.log('🔍 DEBUG MovieDetail - movie prop:', movie);
         console.log('🔍 Has user_rating?', movie && 'user_rating' in movie);
@@ -51,7 +51,6 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
         }
     }, [movie]);
 
-    // Отладка состояния
     console.log('📊 Current state - userRating:', userRating);
     console.log('📊 Current state - listType:', listType);
     console.log('📊 Current state - listType === "favorite":', listType === 'favorite');
@@ -155,14 +154,10 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
             { type: '' as const, label: '🗑️ Remove from list', icon: '🗑️' }
         ];
 
-        // Фильтруем: если фильм уже в списке, показываем только кнопку удаления
-        // Если фильм не в списке, показываем кнопки добавления
         const buttons = allButtons.filter(button => {
             if (listType) {
-                // Если фильм в каком-то списке, показываем только кнопку удаления
                 return button.type !== listType;
             } else {
-                // Если фильм не в списке, показываем только кнопки добавления
                 return button.type !== '';
             }
         });
@@ -222,7 +217,6 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
                             )}
                         </div>
 
-                        {/* Контролы для аутентифицированных пользователей */}
                         {isAuthenticated && (
                             <div className="user-controls">
                                 {error && <div className="error-message">{error}</div>}
@@ -261,6 +255,13 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
                     </div>
 
                     <div className="details-grid">
+                        <div className="reviews-container">
+                            <ReviewsSection
+                                movieInfo={getMovieInfo()}
+                                isAuthenticated={isAuthenticated}
+                            />
+                        </div>
+
                         <div className="detail-column">
                             <h3>Cast</h3>
                             <div className="actors-list">

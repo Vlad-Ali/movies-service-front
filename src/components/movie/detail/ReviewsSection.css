@@ -1,0 +1,219 @@
+.reviews-section {
+    margin-top: 30px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reviews-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.reviews-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.add-review-btn {
+    background: linear-gradient(135deg, #8b5cf6, #06d6a0);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.add-review-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+}
+
+.review-form {
+    margin-bottom: 20px;
+}
+
+.review-form textarea {
+    width: 100%;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    resize: vertical;
+    margin-bottom: 12px;
+}
+
+.review-form textarea:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 2px rgba(139, 92, 246, 0.2);
+}
+
+.review-form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.save-btn, .cancel-btn, .delete-btn, .edit-btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border: none;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #8b5cf6, #06d6a0);
+    color: white;
+}
+
+.save-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.cancel-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.delete-btn {
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.edit-btn {
+    background: rgba(59, 130, 246, 0.2);
+    color: #93c5fd;
+    border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.my-review, .review-item {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.review-author {
+    font-weight: 600;
+    color: white;
+}
+
+.review-date {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.review-likes {
+    color: #06d6a0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.review-text {
+    color: #e0e0e0;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.liked-badge {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 4px 8px;
+    background: rgba(239, 68, 68, 0.2);
+    color: #fca5a5;
+    border-radius: 12px;
+    font-size: 0.8rem;
+}
+
+.no-reviews {
+    text-align: center;
+    padding: 30px;
+    color: #888;
+}
+
+.auth-required {
+    text-align: center;
+    padding: 12px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 8px;
+    color: #8b5cf6;
+    margin-top: 20px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+    color: #888;
+}
+
+.error-message {
+    background: rgba(220, 38, 38, 0.1);
+    color: #fca5a5;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    font-size: 0.9rem;
+}
+
+.review-rating-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0 12px 0;
+    padding: 6px 12px;
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 6px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    width: fit-content;
+}
+
+.review-rating-label {
+    color: #ffd700;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.review-rating-stars {
+    color: #ffd700;
+    font-size: 1rem;
+    letter-spacing: 1px;
+}
+
+.review-rating-value {
+    color: #ffd700;
+    font-weight: 600;
+    font-size: 0.9rem;
+}

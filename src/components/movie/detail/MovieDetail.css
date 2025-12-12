@@ -406,3 +406,9 @@
     border: 1px solid rgba(220, 38, 38, 0.3);
     font-size: 0.9rem;
 }
+
+.reviews-container {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
