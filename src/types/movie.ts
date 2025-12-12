@@ -23,3 +23,20 @@ export interface UserMovie {
 }
 
 export type TabType = 'all' | 'watchlist' | 'favorite';
+
+export interface MovieInfo {
+    title: string;
+    year: number;
+    month: number;
+    day: number;
+}
+
+export interface SaveRatingRequest {
+    movie_info: MovieInfo;
+    rating: number;
+}
+
+export interface SaveListTypeRequest {
+    movie_info: MovieInfo;
+    list_type: 'watchlist' | 'favorite' | '';
+}

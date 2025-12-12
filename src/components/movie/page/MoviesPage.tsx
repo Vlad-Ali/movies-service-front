@@ -63,6 +63,11 @@ export const MoviesPage: React.FC = () => {
         setSelectedMovie(null);
     };
 
+    const handleUpdate = () => {
+        // Перезагружаем фильмы при обновлении рейтинга/списка
+        loadMovies();
+    };
+
     return (
         <div className="movies-page">
             <div className="movies-header">
@@ -117,6 +122,7 @@ export const MoviesPage: React.FC = () => {
                 movie={selectedMovie}
                 onClose={handleCloseDetail}
                 isAuthenticated={!!user}
+                onUpdate={handleUpdate}
             />
         </div>
     );

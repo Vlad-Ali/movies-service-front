@@ -293,3 +293,116 @@
 .movie-detail-content::-webkit-scrollbar-thumb:hover {
     background: linear-gradient(135deg, #7c3aed, #05c391);
 }
+
+.user-controls {
+    margin-top: 24px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-controls h4 {
+    margin: 0 0 12px 0;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.rating-controls,
+.list-controls {
+    margin-bottom: 20px;
+}
+
+.stars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+}
+
+.star {
+    background: transparent;
+    border: none;
+    color: #666;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0;
+    transition: all 0.2s ease;
+}
+
+.star:hover:not(.disabled) {
+    color: #ffd700;
+    transform: scale(1.2);
+}
+
+.star.active {
+    color: #ffd700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.star.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.rating-hint {
+    color: #888;
+    font-size: 0.8rem;
+    font-style: italic;
+}
+
+.list-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.list-btn {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: #e0e0e0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.list-btn:hover:not(.disabled) {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.list-btn.active {
+    background: linear-gradient(135deg, #8b5cf6, #06d6a0);
+    color: white;
+    border-color: transparent;
+}
+
+.list-btn.disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.auth-required {
+    margin-top: 20px;
+    padding: 12px;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 8px;
+    color: #8b5cf6;
+    text-align: center;
+}
+
+.error-message {
+    background: rgba(220, 38, 38, 0.1);
+    color: #fca5a5;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(220, 38, 38, 0.3);
+    font-size: 0.9rem;
+}
