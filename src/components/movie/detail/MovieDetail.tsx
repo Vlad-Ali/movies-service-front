@@ -20,8 +20,6 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
                                                             onUpdate
                                                         }) => {
 
-    const isUserMovie = movie && 'user_rating' in movie;
-
 
     const [userRating, setUserRating] = useState<number>(0);
     const [listType, setListType] = useState<'watchlist' | 'favorite' | ''>('');
