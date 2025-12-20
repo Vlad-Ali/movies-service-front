@@ -22,7 +22,6 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
 
     const isUserMovie = movie && 'user_rating' in movie;
 
-    console.log('🧪 isUserMovie:', isUserMovie);
 
     const [userRating, setUserRating] = useState<number>(0);
     const [listType, setListType] = useState<'watchlist' | 'favorite' | ''>('');
@@ -30,35 +29,19 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
     const [error, setError] = useState('');
 
     useEffect(() => {
-        console.log('🔍 DEBUG MovieDetail - movie prop:', movie);
-        console.log('🔍 Has user_rating?', movie && 'user_rating' in movie);
-        console.log('🔍 Has list_type?', movie && 'list_type' in movie);
 
         if (movie && 'list_type' in movie) {
             const userMovie = movie as UserMovie;
-            console.log('🔍 list_type value:', userMovie.list_type);
-            console.log('🔍 list_type type:', typeof userMovie.list_type);
-            console.log('🔍 list_type length:', userMovie.list_type.length);
-            console.log('🔍 Is empty string?', userMovie.list_type === '');
-            console.log('🔍 Is "favorite"?', userMovie.list_type === 'favorite');
-            console.log('🔍 Is "watchlist"?', userMovie.list_type === 'watchlist');
 
 
             setUserRating(userMovie.user_rating);
             setListType(userMovie.list_type);
         } else {
-            console.log('🔍 Not a UserMovie or no movie');
             setUserRating(0);
             setListType('');
         }
     }, [movie]);
 
-    console.log('📊 Current state - userRating:', userRating);
-    console.log('📊 Current state - listType:', listType);
-    console.log('📊 Current state - listType === "favorite":', listType === 'favorite');
-    console.log('📊 Current state - listType === "watchlist":', listType === 'watchlist');
-    console.log('📊 Current state - listType === "":', listType === '');
-    console.log('📊 Current state - !!listType:', !!listType);
 
     if (!movie) return null;
 
@@ -130,7 +113,6 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
     };
 
     const renderStars = () => {
-        console.log(`userRating: ${userRating} in ${movie.title}`);
         return [...Array(10)].map((_, index) => {
             const ratingValue = index + 1;
             return (

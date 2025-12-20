@@ -20,25 +20,20 @@ export const MoviesPage: React.FC = () => {
         setError('');
 
         try {
-            console.log(`🎬 Loading movies - Tab: ${activeTab}, User: ${user ? 'authenticated' : 'not authenticated'}`);
 
             if (activeTab === 'all') {
                 if (user) {
-                    console.log('📊 Loading all movies for authenticated user');
                     const userMovies = await movieService.getUserMovies('all');
                     setMovies(userMovies);
                 } else {
-                    console.log('📊 Loading all movies for guest');
                     const allMovies = await movieService.getAllMovies();
                     setMovies(allMovies);
                 }
             } else {
                 if (user) {
-                    console.log(`📊 Loading ${activeTab} movies`);
                     const userMovies = await movieService.getUserMovies(activeTab);
                     setMovies(userMovies);
                 } else {
-                    console.log('🔒 User not authenticated for user-specific tabs');
                     setMovies([]);
                 }
             }

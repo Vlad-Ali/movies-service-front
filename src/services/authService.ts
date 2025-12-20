@@ -3,7 +3,6 @@ import {AuthResponse, LoginData, RegisterData, RegisterResponse} from "../types/
 
 export const authService = {
     async login(loginData: LoginData): Promise<AuthResponse> {
-        console.log('Login service called ', loginData.email);
         const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.LOGIN}`, {
             method: 'POST',
             headers: {
@@ -21,7 +20,6 @@ export const authService = {
     },
 
     async register(registerData: RegisterData): Promise<RegisterResponse> {
-        console.log(`Register service called `, registerData.email);
         const response = await fetch(`${API_BASE_URL}${API_ENDPOINTS.REGISTER}`, {
             method: 'POST',
             headers: {

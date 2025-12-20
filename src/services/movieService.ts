@@ -27,7 +27,6 @@ export const movieService = {
             url.searchParams.append('listType', listTypeValue);
         }
 
-        console.log(`📝 Fetching user movies from: ${url.toString()}`);
 
         const response = await authFetch(url.toString(), {
             method: 'GET',
@@ -37,7 +36,6 @@ export const movieService = {
             },
         });
 
-        console.log(`📨 Response status: ${response.status} ${response.statusText}`);
 
         if (!response.ok){
             console.error(`❌ Failed to fetch user movies: ${response.status} ${response.statusText}`);
@@ -45,7 +43,6 @@ export const movieService = {
         }
 
         const data = await response.json();
-        console.log(`✅ Successfully fetched ${data.userMovies?.length || 0} user movies`);
         return data.userMovies || [];
     },
     async saveRating(movieInfo: MovieInfo, rating: number): Promise<void> {
@@ -57,7 +54,6 @@ export const movieService = {
             rating: Math.max(1, Math.min(10, rating))
         };
 
-        console.log(`📊 Saving rating ${rating} for movie: ${movieInfo.title}`);
 
         const response = await authFetch(`${API_BASE_URL}/api/user/movie/rating`, {
             method: 'PATCH',
