@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import { User } from "./types/auth";
 import { Login } from "./components/auth/Login";
@@ -23,6 +23,20 @@ function AppContent() {
   const handleRegisterSuccess = () => {
     alert('Registration successful! Please login.');
   };
+
+  useEffect(() => {
+      const handleAuthError = () => {
+          console.log('🔄 App received auth-error event');
+          logout();
+          alert('Your session has expired. Please login again.');
+      };
+
+      window.addEventListener('auth-error', handleAuthError);
+
+      return () => {
+          window.removeEventListener('auth-error', handleAuthError);
+      };
+      }, [logout]);
 
   return (
       <div className="App">

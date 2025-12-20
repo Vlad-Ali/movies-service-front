@@ -3,6 +3,8 @@ import { Movie, UserMovie, MovieInfo } from '../../../types/movie';
 import { movieService } from '../../../services/movieService';
 import './MovieDetail.css';
 import {ReviewsSection} from "./ReviewsSection";
+import {SummarySection} from "./SummarySection";
+import {imageService} from "../../../services/imageService";
 
 interface MovieDetailProps {
     movie: Movie | UserMovie | null;
@@ -65,8 +67,7 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
         : new Date(movie.year, movie.month - 1, movie.day);
 
     const getMovieImage = (title: string) => {
-        const imageName = title.toLowerCase().replace(/[^a-z0-9]/g, '-');
-        return `/images/movies/${imageName}.jpg`;
+        return imageService.getMovieImage(title);
     };
 
     const getMovieInfo = (): MovieInfo => {
@@ -255,6 +256,9 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
                     </div>
 
                     <div className="details-grid">
+                        <div className="summary-reviews-container">
+                            <SummarySection movieInfo={getMovieInfo()} />
+                        </div>
                         <div className="reviews-container">
                             <ReviewsSection
                                 movieInfo={getMovieInfo()}

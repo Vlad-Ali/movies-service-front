@@ -217,3 +217,48 @@ button:disabled {
     font-weight: 600;
     font-size: 0.9rem;
 }
+
+.review-likes-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.like-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    padding: 4px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+}
+
+.like-btn:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.like-btn.liked {
+    color: #ef4444;
+}
+
+.like-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.review-likes-count {
+    color: #888;
+    font-size: 0.9rem;
+    min-width: 20px;
+}
+
+.review-likes {
+    display: none;
+}

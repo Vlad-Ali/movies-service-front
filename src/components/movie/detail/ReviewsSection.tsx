@@ -20,6 +20,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
     const [showReviewForm, setShowReviewForm] = useState(false);
     const [reviewText, setReviewText] = useState('');
     const [editing, setEditing] = useState(false);
+    const [liking, setLiking] = useState<string | null>(null);
 
     useEffect(() => {
         loadReviews();
@@ -47,6 +48,43 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
             setError(err instanceof Error ? err.message : 'Failed to load reviews');
         } finally {
             setLoading(false);
+        }
+    };
+
+    const handleLikeReview = async (reviewId: string) => {
+        if (!isAuthenticated) {
+            setError('Please login to like reviews');
+            return;
+        }
+
+        setLiking(reviewId);
+        setError('');
+
+        try {
+            const review = reviews.find(r => r.id === reviewId);
+            if (!review) return;
+
+            if (review.is_liked) {
+                await reviewService.unlikeReview(reviewId);
+                // Обновляем локально
+                setReviews(prev => prev.map(r =>
+                    r.id === reviewId
+                        ? { ...r, is_liked: false, likes: Math.max(0, r.likes - 1) }
+                        : r
+                ));
+            } else {
+                await reviewService.likeReview(reviewId);
+                // Обновляем локально
+                setReviews(prev => prev.map(r =>
+                    r.id === reviewId
+                        ? { ...r, is_liked: true, likes: r.likes + 1 }
+                        : r
+                ));
+            }
+        } catch (err) {
+            setError(err instanceof Error ? err.message : 'Failed to update like');
+        } finally {
+            setLiking(null);
         }
     };
 
@@ -216,7 +254,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
             ) : (
                 <div className="reviews-list">
                     {reviews
-                        .filter(review => !myReview || review.id !== myReview.id) // Не показываем свой отзыв в общем списке
+                        .filter(review => !myReview || review.id !== myReview.id)
                         .map(review => (
                             <div key={review.id} className="review-item">
                                 <div className="review-header">
@@ -224,7 +262,17 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
                                     <span className="review-date">
                                         {formatDate(review.review_year, review.review_month, review.review_day)}
                                     </span>
-                                    <span className="review-likes">👍 {review.likes}</span>
+                                    <div className="review-likes-container">
+                                        <button
+                                            className={`like-btn ${review.is_liked ? 'liked' : ''}`}
+                                            onClick={() => handleLikeReview(review.id)}
+                                            disabled={!isAuthenticated || liking === review.id}
+                                            title={review.is_liked ? 'Unlike' : 'Like'}
+                                        >
+                                            {review.is_liked ? '❤️' : '🤍'}
+                                        </button>
+                                        <span className="review-likes-count">{review.likes}</span>
+                                    </div>
                                 </div>
                                 {review.user_rating > 0 && renderReviewRating(review.user_rating)}
                                 <p className="review-text">{review.text}</p>

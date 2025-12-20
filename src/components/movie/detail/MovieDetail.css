@@ -412,3 +412,13 @@
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 20px;
 }
+
+.summary-reviews-container {
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+}
+
+.summary-section {
+    margin-bottom: 30px;
+}

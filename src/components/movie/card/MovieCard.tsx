@@ -1,6 +1,7 @@
 import React from 'react';
 import './MovieCard.css';
 import {Movie, UserMovie} from "../../../types/movie";
+import {imageService} from "../../../services/imageService";
 
 interface MovieCardProps {
     movie: Movie | UserMovie;
@@ -17,8 +18,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
         : movie.year;
 
     const getMovieImage = (title: string) => {
-        const imageName = title.toLowerCase().replace(/[^a-z0-9]/g, '-');
-        return `/images/movies/${imageName}.jpg`;
+        return imageService.getMovieImage(title);
     };
 
     return (

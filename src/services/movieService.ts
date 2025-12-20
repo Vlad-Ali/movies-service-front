@@ -1,9 +1,10 @@
 import {Movie, MovieInfo, SaveListTypeRequest, SaveRatingRequest, TabType, UserMovie} from "../types/movie";
 import {API_BASE_URL} from "../config/api";
+import {authFetch} from "./api";
 
 export const movieService = {
     async getAllMovies(): Promise<Movie[]> {
-        const response = await fetch(`${API_BASE_URL}/api/movie/all`);
+        const response = await authFetch(`${API_BASE_URL}/api/movie/all`);
         if (!response.ok){
             console.log(`Failed to fetch movies for ${response.statusText}`);
             throw new Error('Failed to fetch movies');
@@ -28,7 +29,7 @@ export const movieService = {
 
         console.log(`📝 Fetching user movies from: ${url.toString()}`);
 
-        const response = await fetch(url.toString(), {
+        const response = await authFetch(url.toString(), {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -58,7 +59,7 @@ export const movieService = {
 
         console.log(`📊 Saving rating ${rating} for movie: ${movieInfo.title}`);
 
-        const response = await fetch(`${API_BASE_URL}/api/user/movie/rating`, {
+        const response = await authFetch(`${API_BASE_URL}/api/user/movie/rating`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${token}`,
@@ -86,7 +87,7 @@ export const movieService = {
 
         console.log(`📋 Saving to list "${listType}": ${movieInfo.title}`);
 
-        const response = await fetch(`${API_BASE_URL}/api/user/movie/list`, {
+        const response = await authFetch(`${API_BASE_URL}/api/user/movie/list`, {
             method: 'PATCH',
             headers: {
                 'Authorization': `Bearer ${token}`,

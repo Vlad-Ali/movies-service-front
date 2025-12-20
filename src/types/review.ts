@@ -31,3 +31,11 @@ export interface MyReview {
 export interface ReviewsResponse {
     reviews: Review[];
 }
+
+export interface ReviewLikeRequest {
+    review_id: string;
+}
+
+export interface SummaryResponse {
+    summary: string;
+}
