@@ -24,6 +24,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
 
     useEffect(() => {
         loadReviews();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [movieInfo, isAuthenticated]);
 
     const loadReviews = async () => {
