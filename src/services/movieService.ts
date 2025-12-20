@@ -54,7 +54,7 @@ export const movieService = {
 
         const requestBody: SaveRatingRequest = {
             movie_info: movieInfo,
-            rating: Math.max(1, Math.min(10, rating)) // Ограничиваем 1-10
+            rating: Math.max(1, Math.min(10, rating))
         };
 
         console.log(`📊 Saving rating ${rating} for movie: ${movieInfo.title}`);

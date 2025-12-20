@@ -8,7 +8,7 @@ import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import {MoviesPage} from "./components/movie/page/MoviesPage";
 
 function AppContent() {
-  const { user, login, logout } = useAuth(); // Используем контекст
+  const { user, login, logout } = useAuth();
   const [showLogin, setShowLogin] = useState(false);
   const [showRegister, setShowRegister] = useState(false);
 

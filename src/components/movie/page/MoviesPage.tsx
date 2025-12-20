@@ -8,7 +8,7 @@ import { movieService } from "../../../services/movieService";
 import {useAuth} from "../../../contexts/AuthContext";
 
 export const MoviesPage: React.FC = () => {
-    const { user } = useAuth(); // Теперь useAuth доступен
+    const { user } = useAuth();
     const [activeTab, setActiveTab] = useState<TabType>('all');
     const [movies, setMovies] = useState<(Movie | UserMovie)[]>([]);
     const [selectedMovie, setSelectedMovie] = useState<Movie | UserMovie | null>(null);
@@ -64,7 +64,6 @@ export const MoviesPage: React.FC = () => {
     };
 
     const handleUpdate = () => {
-        // Перезагружаем фильмы при обновлении рейтинга/списка
         loadMovies();
     };
 

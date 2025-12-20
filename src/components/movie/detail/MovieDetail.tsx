@@ -43,7 +43,7 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
             console.log('🔍 Is "favorite"?', userMovie.list_type === 'favorite');
             console.log('🔍 Is "watchlist"?', userMovie.list_type === 'watchlist');
 
-            // Устанавливаем значения
+
             setUserRating(userMovie.user_rating);
             setListType(userMovie.list_type);
         } else {
@@ -101,7 +101,7 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
         try {
             await movieService.saveRating(getMovieInfo(), rating);
             setUserRating(rating);
-            if (onUpdate) onUpdate(); // Обновляем родительский компонент
+            if (onUpdate) onUpdate();
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to save rating');
         } finally {
@@ -121,7 +121,7 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
         try {
             await movieService.saveToList(getMovieInfo(), type);
             setListType(type);
-            if (onUpdate) onUpdate(); // Обновляем родительский компонент
+            if (onUpdate) onUpdate();
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to save to list');
         } finally {
@@ -148,7 +148,6 @@ export const MovieDetail: React.FC<MovieDetailProps> = ({
     };
 
     const renderListButtons = () => {
-        // Создаем массив всех возможных кнопок
         const allButtons = [
             { type: 'watchlist' as const, label: '📝 Add to Watchlist', icon: '📝' },
             { type: 'favorite' as const, label: '❤️ Add to Favorite', icon: '❤️' },

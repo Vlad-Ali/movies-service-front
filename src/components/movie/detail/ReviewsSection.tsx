@@ -66,7 +66,6 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
 
             if (review.is_liked) {
                 await reviewService.unlikeReview(reviewId);
-                // Обновляем локально
                 setReviews(prev => prev.map(r =>
                     r.id === reviewId
                         ? { ...r, is_liked: false, likes: Math.max(0, r.likes - 1) }
@@ -74,7 +73,6 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
                 ));
             } else {
                 await reviewService.likeReview(reviewId);
-                // Обновляем локально
                 setReviews(prev => prev.map(r =>
                     r.id === reviewId
                         ? { ...r, is_liked: true, likes: r.likes + 1 }
@@ -117,7 +115,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
             });
             setShowReviewForm(false);
             setEditing(false);
-            await loadReviews(); // Перезагружаем отзывы
+            await loadReviews();
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to save review');
         } finally {
@@ -139,7 +137,7 @@ export const ReviewsSection: React.FC<ReviewsSectionProps> = ({
             setReviewText('');
             setShowReviewForm(false);
             setEditing(false);
-            await loadReviews(); // Перезагружаем отзывы
+            await loadReviews();
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Failed to delete review');
         } finally {

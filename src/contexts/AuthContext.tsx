@@ -13,13 +13,11 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [user, setUser] = useState<User | null>(null);
 
     useEffect(() => {
-        // Проверяем токен при загрузке
         const token = localStorage.getItem('token');
         const username = localStorage.getItem('username');
         const email = localStorage.getItem('email');
         if (token && username && email) {
-            // Здесь можно сделать запрос для получения данных пользователя
-            // Пока используем временные данные
+
             setUser({ email: email, username: username });
         }
     }, []);
