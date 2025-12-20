@@ -1,13 +1,13 @@
 name: Deploy React App to GitHub Pages
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 on:
   push:
     branches: [main]
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
 
 jobs:
   build-and-deploy:
