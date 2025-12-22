@@ -35,7 +35,9 @@ jobs:
           echo "REACT_APP_API_URL is set"
       
       - name: Build React app
-        run: npm run build
+        run: |
+          export PUBLIC_URL=https://vlad-ali.github.io/movies-service-front
+          npm run build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
