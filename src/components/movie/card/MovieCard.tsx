@@ -28,7 +28,7 @@ export const MovieCard: React.FC<MovieCardProps> = ({
                     src={getMovieImage(movie.title)}
                     alt={movie.title}
                     onError={(e) => {
-                        (e.target as HTMLImageElement).src = '/images/movies/default.jpg';
+                        (e.target as HTMLImageElement).src = '/movies-service-front/images/movies/default.jpg';
                     }}
                 />
             </div>
