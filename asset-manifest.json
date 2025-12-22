@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/movies-service-front/static/css/main.b04bac6e.css",
-    "main.js": "/movies-service-front/static/js/main.9d7b72d7.js",
-    "index.html": "/movies-service-front/index.html",
-    "main.b04bac6e.css.map": "/movies-service-front/static/css/main.b04bac6e.css.map",
-    "main.9d7b72d7.js.map": "/movies-service-front/static/js/main.9d7b72d7.js.map"
+    "main.css": "https://vlad-ali.github.io/movies-service-front/static/css/main.b04bac6e.css",
+    "main.js": "https://vlad-ali.github.io/movies-service-front/static/js/main.9d7b72d7.js",
+    "index.html": "https://vlad-ali.github.io/movies-service-front/index.html",
+    "main.b04bac6e.css.map": "https://vlad-ali.github.io/movies-service-front/static/css/main.b04bac6e.css.map",
+    "main.9d7b72d7.js.map": "https://vlad-ali.github.io/movies-service-front/static/js/main.9d7b72d7.js.map"
   },
   "entrypoints": [
     "static/css/main.b04bac6e.css",
